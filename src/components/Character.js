@@ -4,10 +4,10 @@ const Character = ({ character }) => {
   return (
     <figure className="CharCard">
       {character.name &&
-        character.thumbnail.path &&
+        character.thumbnail &&
         <img
           className="CharCard--img"
-          src={`${character.thumbnail.path}.jpg`}
+          src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
           alt={character.name}
         />}
       <figcaption className={'CharCard--subtitle'}>
@@ -15,10 +15,9 @@ const Character = ({ character }) => {
           <strong>
             {character.name}
           </strong>}
-        {character.comics.available &&
-          <em>
-            Appears in {character.comics.available} comics!
-          </em>}
+        <em>
+          Appears in {character.comics.available} comics!
+        </em>
       </figcaption>
     </figure>
   );
