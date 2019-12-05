@@ -24,18 +24,26 @@
 
 .CharCard {
   width: 250px;
-  max-height: 250px;
+  height: 350px;
   margin: 10px 10px;
 }
 .CharCard--img {
   width: 100%;
-  max-height: 140px;
+  height: 250px;
 }
 .CharCard--subtitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   background: #eea508;
-  padding: 10px 0;
+  padding: 10px 10px;
+  height: 100px;
 }
 .CharCard--subtitle em {
   display: block;
   font-size: .5rem;
+  margin: 10px 0;
+}
+.Pagination--container {
+  margin: 0 auto;
 }

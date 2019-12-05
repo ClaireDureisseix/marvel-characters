@@ -19,40 +19,63 @@ class CharacterList extends Component {
   };
 
   componentDidMount() {
-    this.fetchCharacter(1);
+    this.fetchCharacter(0);
   }
 
+  componentDidUpdate() {
+    
+  }
+
+  
+  fetchCharacter = async pageNb => {
+    const offset = pageNb * 20
+    const api_call = await fetch(`${url}?offset=${offset}${KEY}`);
+    const data = await api_call.json();
+    const total = data.data.total;
+    const totalPagesCount = this.getPageCount(total, 20);
+    this.setState({ characters: data.data.results, totalPages: totalPagesCount });
+  };
+  
+  getPageCount = ( total, denominator ) => {
+		const divisible	= 0 === total % denominator;
+		const valueToBeAdded = divisible ? 0 : 1;
+		return Math.floor( total/denominator ) + valueToBeAdded;
+	};
+  
   changeCurrentPage = numPage => {
     this.setState({ currentPage: numPage });
     this.fetchCharacter(this.state.currentPage)
   };
 
-  fetchCharacter = async pageNb => {
-    const api_call = await fetch(`${url}?offset=${pageNb}${KEY}`);
-    const data = await api_call.json();
-    this.setState({ characters: data.data.results, totalPages: data.data.total });
-  };
 
   render() {
     const { characters, currentPage, totalPages } = this.state;
     return (
     <>
-      <div className="characters--wrapper">
-        {characters.map(
-          character =>
-            !character.thumbnail.path.includes('not_available') &&
-            <Character character={character} key={character.id} />
-        )}
-      </div>
-
-      <div>
+      <div className='Pagination--container'>
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
           changeCurrentPage={this.changeCurrentPage}
           theme="bottom-border"
         />
-        {/* <h2>current Page:{this.state.currentPage}</h2> */}
+      </div>
+      
+      <div className="characters--wrapper">
+        {characters.map(
+          character =>
+            // !character.thumbnail.path.includes('not_available') &&
+            <Character character={character} key={character.id} />
+        )}
+      </div>
+
+      <div className='Pagination--container'>
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          changeCurrentPage={this.changeCurrentPage}
+          theme="bottom-border"
+        />
       </div>
           
     </>
