@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import 'react-pagination-library/build/css/index.css';
+import './pagination.css';
 
 import Character from './Character';
 import Pagination from 'react-pagination-library';
@@ -10,7 +11,7 @@ class CharacterList extends Component {
   state = {
     characters: [],
     loading: false,
-    message: 'Test',
+    message: '',
     currentPage: 1,
     totalPages: 0
   };
@@ -65,11 +66,11 @@ class CharacterList extends Component {
             currentPage={currentPage}
             totalPages={totalPages}
             changeCurrentPage={this.changeCurrentPage}
-            theme="bottom-border"
+            theme="square-fill"
           />
         </div>
 
-        {!loading && <div>Loading...</div>}
+        {!loading && <div className="loader" />}
 
         {message &&
           <p className="error-message">
@@ -85,14 +86,11 @@ class CharacterList extends Component {
         </div>
 
         <div className="Pagination--container">
-          <p className="error-message">
-            {message}
-          </p>
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
             changeCurrentPage={this.changeCurrentPage}
-            theme="bottom-border"
+            theme="square-fill"
           />
         </div>
       </div>

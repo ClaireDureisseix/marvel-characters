@@ -1,0 +1,48 @@
+a:hover:not(.active) {
+  background-color: #ffc107;
+}
+
+.bottom-border .is-active li {
+  font-weight: bold;
+  border-bottom: 3px solid #ffc107;
+}
+
+.square-fill .is-active {
+  background-color: #ffc107;
+}
+
+.square-fill a:first-child:not(.active) {
+  background-color: #ffc107;
+}
+
+.square-fill a:last-child:not(.active) {
+  background: #ffc107;
+}
+
+.square-fill > a:last-of-type {
+  background-color: #ffc107;
+}
+
+.square-i a {
+  color: #ffc107;
+  border-color: #ffc107;
+}
+
+.square-i .is-active {
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.circle a.is-active {
+  border: 3px solid #ffc107;
+}
+
+.square a.is-active {
+  border: 3px solid #ffc107;
+}
+
+.default .is-active {
+  background-color: #ffc107;
+  color: white;
+  border: 1px solid #ffc107;
+}
