@@ -6,6 +6,7 @@ import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import Title from './Title'
 import apiId from '../apiId';
 
+// Show page
 class CharacterShow extends Component {
   state = {
     character: [],
@@ -16,6 +17,7 @@ class CharacterShow extends Component {
     this.fetchCharacter()
   }
 
+  // Method which fetches the data with the id of the character clicked
   fetchCharacter = () => {
     const id = this.props.match.params.id;    
     apiId(id).then(res => {
