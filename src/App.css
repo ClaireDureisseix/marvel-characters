@@ -11,22 +11,38 @@
   display: flex;
   flex-direction: column;
 }
+.Title--wrapper {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Play', sans-serif;
+  position: fixed;
+  width: 100%;
+  padding: 20px 40px;
+  background: #fff;
+  color: #eea508;
+  align-items: center;
+  box-shadow: 0px 5px 6px 0px #b3b3b3b3;
+}
+.Home--wrapper {
+  margin-top: 100px;
+}
+.Pagination--container {
+  margin: 0 auto;
+  text-align: center;
+}
+
 .characters--wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }
-.filter {
-  width: 200px;
-  margin: 20px auto;
-  padding: 20px 20px;
-}
 
 .CharCard {
   width: 250px;
   height: 350px;
   margin: 10px 10px;
+  box-shadow: 5px 8px 5px 0px #616161b3;
 }
 .CharCard--img {
   width: 100%;
@@ -47,6 +63,11 @@
   margin: 10px 0;
 }
 
-.Pagination--container {
-  margin: 0 auto;
+.fas {
+  color: grey;
+  font-size: 2rem;
+}
+
+.CharShow--wrapper {
+  padding: 100px 20px 20px 20px;
 }
