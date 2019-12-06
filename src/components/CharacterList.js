@@ -19,14 +19,9 @@ class CharacterList extends Component {
   };
 
   componentDidMount() {
-    this.fetchCharacter(0);
+    this.fetchCharacter(this.state.totalPages);
   }
 
-  componentDidUpdate() {
-    
-  }
-
-  
   fetchCharacter = async pageNb => {
     const offset = pageNb * 20
     const api_call = await fetch(`${url}?offset=${offset}${KEY}`);
@@ -64,7 +59,7 @@ class CharacterList extends Component {
       <div className="characters--wrapper">
         {characters.map(
           character =>
-            // !character.thumbnail.path.includes('not_available') &&
+            !character.thumbnail.path.includes('not_available') &&
             <Character character={character} key={character.id} />
         )}
       </div>
