@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Play:400,700&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Play:400,700|Roboto+Mono:300,300i,400,700&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -10,6 +9,12 @@
 .App {
   display: flex;
   flex-direction: column;
+}
+h2,
+p,
+h3,
+li {
+  font-family: 'Roboto Mono', monospace;
 }
 .Title--wrapper {
   display: flex;
@@ -24,7 +29,7 @@
   box-shadow: 0px 5px 6px 0px #b3b3b3b3;
 }
 .Home--wrapper {
-  margin-top: 100px;
+  margin-top: 120px;
 }
 .Pagination--container {
   margin: 0 auto;
@@ -69,5 +74,76 @@
 }
 
 .CharShow--wrapper {
-  padding: 100px 20px 20px 20px;
+  padding: 150px 20px 20px 20px;
+}
+.CharShow--idContainer {
+  width: 100%;
+}
+.CharShow--img {
+  display: block;
+  margin: 0 auto;
+  width: 80vw;
+  border: 5px solid #eea508;
+}
+.CharShow--idText {
+  width: 80vw;
+  padding: 20px 20px;
+}
+.CharShow--idText p,
+.CharShow--idText li {
+  font-size: .8rem;
+}
+.CharShow--description {
+  padding: 10px 0;
+}
+.CharShow--statTitle {
+  padding: 10px 0;
+}
+.CharShow--stat {
+  padding-bottom: 5px;
+}
+.CharShow--stats {
+  padding: 5px 5px;
+}
+
+.CharShow--lists {
+  padding: 0 20px;
+}
+
+.CharShow--lists h3 {
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+.CharShow--back {
+  width: 100%;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .Home--wrapper {
+    margin-top: 100px;
+  }
+  .CharShow--wrapper {
+    padding-top: 100px;
+  }
+  .CharShow--idContainer {
+    display: flex;
+    flex-direction: row;
+  }
+  .CharShow--img {
+    width: 50vw;
+  }
+  .CharShow--idText {
+    width: 50vw;
+  }
+  .CharShow--idText p,
+  .CharShow--idText li {
+    font-size: 1rem;
+  }
+  .CharShow--lists {
+    display: flex;
+  }
+  .CharShow--lists h3 {
+    width: 30vw;
+  }
 }
