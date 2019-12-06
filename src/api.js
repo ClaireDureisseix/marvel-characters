@@ -1,5 +1,4 @@
 import axios from 'axios';
-import md5 from 'md5';
 
 const publicKey = `194e82fa7752a06e318949ee25879c5d`;
 const ts = 1;
