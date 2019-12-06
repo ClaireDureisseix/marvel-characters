@@ -26,7 +26,7 @@ class CharacterList extends Component {
       const totalPagesCount = this.getPageCount(total, 20);
       this.setState({
         characters: res.data.data.results,
-        totalPages: totalPagesCount
+        totalPages: totalPagesCount - 1
       });
     });
   };

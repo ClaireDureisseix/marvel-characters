@@ -18,9 +18,11 @@ const Character = ({ character }) => {
           <strong>
             {character.name}
           </strong>
-          <em>
-            Appears in {character.comics.available} comics!
-          </em>
+          {character.comics.available
+            ? <em>
+                Appears in {character.comics.available} comics!
+              </em>
+            : null}
         </div>
         <Link to={`/character/${character.id}`}>
           <FontAwesomeIcon className="fas fa-eye" icon={faEye} />
