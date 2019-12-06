@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import 'react-pagination-library/build/css/index.css';
+import './pagination.css';
 
 import Character from './Character';
 import Pagination from 'react-pagination-library';
@@ -9,6 +10,7 @@ import api from '../api';
 class CharacterList extends Component {
   state = {
     characters: [],
+    loading: false,
     message: '',
     currentPage: 1,
     totalPages: 0
@@ -19,16 +21,22 @@ class CharacterList extends Component {
   }
 
   fetchCharacter = async pageNb => {
-    api(pageNb).then(res => {
-      console.log(res);
-
-      const total = res.data.data.total;
-      const totalPagesCount = this.getPageCount(total, 20);
-      this.setState({
-        characters: res.data.data.results,
-        totalPages: totalPagesCount - 1
-      });
-    });
+    api(pageNb)
+      .then(res => {
+        const total = res.data.data.total;
+        const totalPagesCount = this.getPageCount(total, 20);
+        this.setState({
+          characters: res.data.data.results,
+          loading: true,
+          totalPages: totalPagesCount - 1
+        });
+      })
+      .catch(error =>
+        this.setState({
+          message: 'Failed to fetch heroes. Please check your connexion',
+          loading: false
+        })
+      );
   };
 
   getPageCount = (total, denominator) => {
@@ -44,7 +52,13 @@ class CharacterList extends Component {
   };
 
   render() {
-    const { characters, currentPage, totalPages } = this.state;
+    const {
+      characters,
+      currentPage,
+      totalPages,
+      message,
+      loading
+    } = this.state;
     return (
       <div className="Home--wrapper">
         <div className="Pagination--container">
@@ -52,9 +66,16 @@ class CharacterList extends Component {
             currentPage={currentPage}
             totalPages={totalPages}
             changeCurrentPage={this.changeCurrentPage}
-            theme="bottom-border"
+            theme="square-fill"
           />
         </div>
+
+        {!loading && <div className="loader" />}
+
+        {message &&
+          <p className="error-message">
+            {message}
+          </p>}
 
         <div className="characters--wrapper">
           {characters.map(
@@ -69,7 +90,7 @@ class CharacterList extends Component {
             currentPage={currentPage}
             totalPages={totalPages}
             changeCurrentPage={this.changeCurrentPage}
-            theme="bottom-border"
+            theme="square-fill"
           />
         </div>
       </div>

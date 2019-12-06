@@ -8,7 +8,8 @@ import apiId from '../apiId';
 
 class CharacterShow extends Component {
   state = {
-    character: []
+    character: [],
+    loading: false
   }
 
   componentDidMount() {
@@ -18,16 +19,20 @@ class CharacterShow extends Component {
   fetchCharacter = () => {
     const id = this.props.match.params.id;    
     apiId(id).then(res => {
-      this.setState({ character: res.data.data.results[0] })
+      this.setState({ 
+        character: res.data.data.results[0], 
+        loading: true 
+      })
     })
   }
 
   render() {
-    const {character} = this.state
+    const {character, loading} = this.state
     return (
       <>
       <Title />
       <div className='CharShow--wrapper'>
+        {!loading && <div className="loader" />}
         <div className='CharShow--idContainer'>
           {character.name &&
             character.thumbnail &&
