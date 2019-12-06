@@ -5,6 +5,7 @@ import Title from './Title';
 
 import '../App.css';
 
+// Stateless component home page
 const Home = () => {
   return (
     <div className="App">

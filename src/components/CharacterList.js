@@ -16,10 +16,12 @@ class CharacterList extends Component {
     totalPages: 0
   };
 
+  // Displays the data when the app is running
   componentDidMount() {
     this.fetchCharacter(this.state.totalPages);
   }
 
+  // Fetch method with axios (the function is on a separate file in order gitignored it)
   fetchCharacter = async pageNb => {
     api(pageNb)
       .then(res => {
@@ -39,12 +41,14 @@ class CharacterList extends Component {
       );
   };
 
+  // Method which calculates total number of pages
   getPageCount = (total, denominator) => {
     const divisible = 0 === total % denominator;
     const valueToBeAdded = divisible ? 0 : 1;
     return Math.floor(total / denominator) + valueToBeAdded;
   };
 
+  // Method which handle click on pagination buttons
   changeCurrentPage = numPage => {
     this.setState({ currentPage: numPage }, () =>
       this.fetchCharacter(this.state.currentPage)

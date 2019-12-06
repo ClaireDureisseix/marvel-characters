@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 
+// Stateless component which displays each hero card
 const Character = ({ character }) => {
   return (
     <figure className="CharCard">

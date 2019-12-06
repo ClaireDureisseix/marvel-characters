@@ -6,6 +6,7 @@ import CharacterShow from './components/CharacterShow';
 
 import './App.css';
 
+// Routes construction
 const App = () => {
   return (
     <Router>
