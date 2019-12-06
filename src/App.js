@@ -1,14 +1,19 @@
 import React from 'react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 
-import CharacterList from './components/CharacterList';
+import Home from './components/Home';
+import CharacterShow from './components/CharacterShow';
 
 import './App.css';
 
 const App = () => {
   return (
-    <div className="App">
-      <CharacterList />
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/character/:id" component={CharacterShow} />
+      </Switch>
+    </Router>
   );
 };
 

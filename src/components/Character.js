@@ -1,7 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-//import { Link } from 'react-router-dom';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
 
 const Character = ({ character }) => {
   return (
@@ -22,7 +22,9 @@ const Character = ({ character }) => {
             Appears in {character.comics.available} comics!
           </em>
         </div>
-        <FontAwesomeIcon className="fa-trash-alt" icon={faTrashAlt} />
+        <Link to={`/character/${character.id}`}>
+          <FontAwesomeIcon className="fas fa-eye" icon={faEye} />
+        </Link>
       </figcaption>
     </figure>
   );
