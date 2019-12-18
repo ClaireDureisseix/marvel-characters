@@ -50,8 +50,12 @@ class CharacterList extends Component {
 
   // Method which handle click on pagination buttons
   changeCurrentPage = numPage => {
-    this.setState({ currentPage: numPage }, () =>
-      this.fetchCharacter(this.state.currentPage)
+    this.setState(
+      {
+        currentPage: numPage,
+        loading: true
+      },
+      () => this.fetchCharacter(this.state.currentPage)
     );
   };
 
@@ -84,8 +88,14 @@ class CharacterList extends Component {
         <div className="characters--wrapper">
           {characters.map(
             character =>
-              !character.thumbnail.path.includes('not_available') &&
-              <Character character={character} key={character.id} />
+              !loading
+                ? <div className="loader" />
+                : !character.thumbnail.path.includes('not_available') &&
+                  <Character
+                    character={character}
+                    key={character.id}
+                    loading={loading}
+                  />
           )}
         </div>
 
